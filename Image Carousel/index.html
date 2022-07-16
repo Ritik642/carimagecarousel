@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>THE CAR IMAGE CAROUSEL</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js" ></script>
+    </head>
+    <body>
+      <section class="main">
+        <div class="first">
+         <h2 data-text="The Car Image Carousel">The Car Image Carousel</h2>
+        </div>
+
+        <div class="content">
+          <div class="images">
+            <img src="img/car1.jpg" >
+            <img src="img/car2.jpg" >
+            <img src="img/car3.jpg" >
+            <img src="img/car4.jpg" >
+            <img src="img/car5.jpg" >
+          </div>
+          <div onclick ="side_slider(-1)" class="slide left">
+            <span class="fas fa-angle-left"></span>
+          </div>
+          <div onclick ="side_slider(1)" class="slide right">
+            <span class="fas fa-angle-right"></span>
+          </div>
+          <div class="btm-sliders">
+            <span onclick="btm_slide(1)"></span>
+            <span onclick="btm_slide(2)"></span>
+            <span onclick="btm_slide(3)"></span>
+            <span onclick="btm_slide(4)"></span>
+            <span onclick="btm_slide(5)"></span>
+          </div>
+        </div>
+        
+        <script>
+            var indexValue = 1;
+            showImg(indexValue);
+            function btm_slide(e){showImg(indexValue = e);}
+            function side_slider(e){showImg(indexValue += e);}
+            function showImg(e){
+                var i;
+                const img = document.querySelectorAll('img');
+                const sliders = document.querySelectorAll('.btm-sliders span');
+                if(e > img.length){indexValue=1}
+                if(e < 1){indexValue=img.length}
+                for(i =0; i<img.length; i++){
+                    img[i].style.display = "none";
+                }
+                for(i =0; i<sliders.length; i++){
+                    sliders[i].style.background = "rgba(255, 255, 255, 0.1)";
+                }
+                img[indexValue-1].style.display = "block";
+                sliders[indexValue-1].style.background = "white";
+            }
+        </script>
+      </section>
+    </body>
+</html>
